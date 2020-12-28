@@ -4,9 +4,12 @@ using RVA.RedundantQueue.Exceptions;
 
 namespace RVA.RedundantQueue.Abstractions
 {
-    public interface IRedundantQueue<T> : ISubQueue<T>
+    public interface IRedundantQueue<T> 
     {
-        EventHandler<RedundantQueueSendException<T>> OnError { get; set; }
+        EventHandler<RedundantQueueSendException<T>> ErrorCallback { get; set; }
+        string Name { get; }
+        (byte Priority, string Name)[] SubQueues { get; }
         Task AddQueueAsync(ISubQueue<T> subQueue);
+        Task SendAsync(T message);
     }
 }

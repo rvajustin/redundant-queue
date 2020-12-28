@@ -19,7 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfd31746-fc57-4101-92a5-a56860525af0" name="Default Changelist" comment="" />
+    <list default="true" id="cfd31746-fc57-4101-92a5-a56860525af0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/TestContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Assembly.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue.sln" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueueSendException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueueSendException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/ISubQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/ISubQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Exceptions/RedundantQueueSendException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Exceptions/RedundantQueueSendException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/AbstractRedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/AbstractRedundantQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,20 +43,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C158E430-C142-4741-ADAB-56A022C4B7B0/6f/29ecb12e/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Package.nuspec" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/xxx.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Assembly.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/AbstractRedundantQueue.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Exceptions/RedundantQueueSendException.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueueSendException.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/ISubQueue.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/TestContainer.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueTests.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueue.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" />
+        <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1mIFLDnPZ5qMsvZxYricg7KjYLz" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502036" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30017453" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -54,14 +91,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609173140381</updated>
-      <workItem from="1609173144050" duration="524000" />
+      <workItem from="1609173144050" duration="1044000" />
+      <workItem from="1609176144903" duration="8174000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -73,8 +111,144 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="481" height="464" key="DebuggerActiveHint" timestamp="1609181887472">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="481" height="464" key="DebuggerActiveHint/0.23.1792.1097@0.23.1792.1097" timestamp="1609181887472" />
+    <state width="1750" height="401" key="GridCell.Tab.0.bottom" timestamp="1609181910111">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910111" />
+    <state width="1750" height="401" key="GridCell.Tab.0.center" timestamp="1609181910111">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910111" />
+    <state width="1750" height="401" key="GridCell.Tab.0.left" timestamp="1609181910110">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910110" />
+    <state width="1750" height="401" key="GridCell.Tab.0.right" timestamp="1609181910111">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910111" />
+    <state width="1750" height="401" key="GridCell.Tab.1.bottom" timestamp="1609181910112">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.1.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910112" />
+    <state width="1750" height="401" key="GridCell.Tab.1.center" timestamp="1609181910112">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.1.center/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910112" />
+    <state width="1750" height="401" key="GridCell.Tab.1.left" timestamp="1609181910111">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.1.left/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910111" />
+    <state width="1750" height="401" key="GridCell.Tab.1.right" timestamp="1609181910112">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.1.right/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910112" />
+    <state width="1750" height="401" key="GridCell.Tab.2.bottom" timestamp="1609181910113">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.2.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910113" />
+    <state width="1750" height="401" key="GridCell.Tab.2.center" timestamp="1609181910113">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.2.center/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910113" />
+    <state width="1750" height="401" key="GridCell.Tab.2.left" timestamp="1609181910112">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.2.left/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910112" />
+    <state width="1750" height="401" key="GridCell.Tab.2.right" timestamp="1609181910113">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.2.right/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910113" />
+    <state width="1750" height="401" key="GridCell.Tab.3.bottom" timestamp="1609181910114">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.3.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910114" />
+    <state width="1750" height="401" key="GridCell.Tab.3.center" timestamp="1609181910114">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.3.center/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910114" />
+    <state width="1750" height="401" key="GridCell.Tab.3.left" timestamp="1609181910113">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.3.left/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910113" />
+    <state width="1750" height="401" key="GridCell.Tab.3.right" timestamp="1609181910114">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.3.right/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910114" />
+    <state width="1750" height="401" key="GridCell.Tab.4.bottom" timestamp="1609181910115">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.4.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910115" />
+    <state width="1750" height="401" key="GridCell.Tab.4.center" timestamp="1609181910114">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.4.center/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910114" />
+    <state width="1750" height="401" key="GridCell.Tab.4.left" timestamp="1609181910114">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.4.left/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910114" />
+    <state width="1750" height="401" key="GridCell.Tab.4.right" timestamp="1609181910115">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1750" height="401" key="GridCell.Tab.4.right/0.23.1792.1097@0.23.1792.1097" timestamp="1609181910115" />
+    <state x="496" y="310" key="Rider.ProjectTemplateDialog.Size" timestamp="1609176229514">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="496" y="310" key="Rider.ProjectTemplateDialog.Size/0.23.1792.1097@0.23.1792.1097" timestamp="1609176229514" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueTests.cs</url>
+          <line>24</line>
+          <properties documentPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueTests.cs" initialLine="26">
+            <startOffsets>
+              <option value="711" />
+            </startOffsets>
+            <endOffsets>
+              <option value="712" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueTests.cs</url>
+          <line>125</line>
+          <properties documentPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueTests.cs" initialLine="97">
+            <startOffsets>
+              <option value="5437" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5477" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs</url>
+          <line>148</line>
+          <properties documentPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs" initialLine="156">
+            <startOffsets>
+              <option value="5562" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5563" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

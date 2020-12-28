@@ -1,6 +1,6 @@
 namespace RVA.RedundantQueue.Implementations
 {
-    internal abstract class AbstractRedundantQueue
+    public abstract class AbstractRedundantQueue
     {
         
     }

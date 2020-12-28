@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RVA.RedundantQueue.Abstractions;
@@ -29,7 +30,7 @@ namespace RVA.RedundantQueue.Implementations
 
         public Task<IRedundantQueue<T>> CreateAsync<T>(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("`name` must be a valid, non-empty, non-null string.", nameof(name));
             }
@@ -49,12 +50,18 @@ namespace RVA.RedundantQueue.Implementations
 
         public Task<IRedundantQueue<T>> ResolveAsync<T>(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("`name` must be a valid, non-empty, non-null string.", nameof(name));
             }
 
             var key = GetKey<T>(name);
+
+            if (!RedundantQueues.ContainsKey(key))
+            {
+                throw new KeyNotFoundException($"A queue named `{name}` of type `{typeof(T).FullName}` could not be located.");
+            }
+            
             var redundantQueue = RedundantQueues[key];
             return Task.FromResult((IRedundantQueue<T>) redundantQueue);
         }
@@ -66,7 +73,8 @@ namespace RVA.RedundantQueue.Implementations
             {
                 unchecked
                 {
-                    var hash = name.Union(key.Item2.Name).Aggregate(23, (current, c) => current * 31 + c);
+                    var hash = name.Aggregate(23, (current, c) => current * 31 + c);
+                    hash = key.Item2.Name.Aggregate(hash, (current, c) => current * 31 + c);
                     Keys[key] = hash;
                 }
             }

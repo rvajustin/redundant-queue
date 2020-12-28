@@ -9,7 +9,7 @@ namespace RVA.RedundantQueue.Implementations
 {
     internal class RedundantQueue<T> : AbstractRedundantQueue, IRedundantQueue<T>
     {
-        private readonly ConcurrentBag<ISubQueue<T>> _queues = new ConcurrentBag<ISubQueue<T>>();
+        private readonly ConcurrentBag<ISubQueue<T>> _subQueues = new ConcurrentBag<ISubQueue<T>>();
 
         public RedundantQueue(string name)
         {
@@ -18,58 +18,67 @@ namespace RVA.RedundantQueue.Implementations
 
         public string Name { get; }
 
-        public EventHandler<RedundantQueueSendException<T>> OnError { get; set; }
+        public (byte Priority, string Name)[] SubQueues => _subQueues.Select(q => (q.Priority, q.Name)).ToArray();
+            
+        public EventHandler<RedundantQueueSendException<T>> ErrorCallback { get; set; }
 
         public Task AddQueueAsync(ISubQueue<T> subQueue)
         {
-            _queues.Add(subQueue);
+            if (_subQueues.Any(q => q.Priority == subQueue.Priority))
+            {
+                throw new InvalidOperationException(
+                    $"Cannot add two sub-queues to a redundant queue with the same priority.");
+            }
+
+            _subQueues.Add(subQueue);
             return Task.CompletedTask;
         }
 
         public async Task SendAsync(T message)
         {
-            if (_queues.Any())
+            if (!_subQueues.Any())
             {
                 throw new InvalidOperationException(
                     $"No sub-queues have been registered for `{Name}` of type `{typeof(T).FullName}`.");
             }
 
-            for (var i = 0; i < _queues.Count; i++)
+            var subQueues = _subQueues.OrderBy(q => q.Priority).ToArray();
+            
+            for (var i = 0; i < subQueues.Length; i++)
             {
-                var queue = _queues.ElementAtOrDefault(i);
+                var subQueue = subQueues[i];
 
-                if (queue == null)
+                if (subQueue == null)
                 {
                     continue;
                 }
 
                 try
                 {
-                    await queue.SendAsync(message);
+                    await subQueue.SendAsync(message);
                     return;
                 }
                 catch (Exception ex)
                 {
-                    var lastChance = i + 1 == _queues.Count;
+                    var lastChance = i + 1 == subQueues.Length;
                     var lastChanceMessage = lastChance
                         ? "This was the last chance to send the message."
                         : "Trying to send the message to a redundant queue.";
 
                     var e = new RedundantQueueSendException<T>(
                         $"Error while queuing message to redundant queue `{Name}` of type `{typeof(T).FullName}`.  " +
-                        $"The message could not be sent to sub-queue named `{queue.Name}` in position number `{i}`.  {lastChanceMessage}",
+                        $"The message could not be sent to sub-queue named `{subQueue.Name}` in position number `{(i + 1)}`.  {lastChanceMessage}",
                         ex,
-                        message);
+                        message,
+                        subQueue);
 
-                    OnError?.Invoke(this, e);
+                    ErrorCallback?.Invoke(this, e);
 
                     if (lastChance)
                     {
                         throw e;
                     }
                 }
-
-                i++;
             }
         }
     }
