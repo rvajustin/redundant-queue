@@ -16,13 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup dotnet
+      - name: Set up dotnet
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.200
 
-      # Publish
-      - name: publish on version change
+      # Publis
+      - name: Publish on version change
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
@@ -36,7 +36,7 @@ jobs:
           VERSION_FILE_PATH: .version
 
           # Regex pattern to extract version info in a capturing group
-          VERSION_REGEX: ^\s(.*)\s*$
+          VERSION_REGEX: (.*)
           
           # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
           # VERSION_STATIC: 1.0.0
