@@ -21,7 +21,7 @@
           <e p="RedundantQueueOrchestrator.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netstandard2.1" t="Include">
               <e p="RVA.RedundantQueue.AssemblyInfo.cs" t="Include" />
             </e>
