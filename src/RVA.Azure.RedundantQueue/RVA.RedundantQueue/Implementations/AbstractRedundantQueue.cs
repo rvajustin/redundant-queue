@@ -1,4 +1,4 @@
-namespace RVA.Azure.RedundantQueue.Implementations
+namespace RVA.RedundantQueue.Implementations
 {
     internal abstract class AbstractRedundantQueue
     {

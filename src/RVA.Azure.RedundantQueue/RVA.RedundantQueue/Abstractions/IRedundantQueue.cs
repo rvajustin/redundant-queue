@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using RVA.Azure.RedundantQueue.Exceptions;
+using RVA.RedundantQueue.Exceptions;
 
-namespace RVA.Azure.RedundantQueue.Abstractions
+namespace RVA.RedundantQueue.Abstractions
 {
     public interface IRedundantQueue<T> : ISubQueue<T>
     {

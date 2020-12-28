@@ -1,7 +1,7 @@
 using System;
-using RVA.Azure.RedundantQueue.Abstractions;
+using RVA.RedundantQueue.Abstractions;
 
-namespace RVA.Azure.RedundantQueue.Exceptions
+namespace RVA.RedundantQueue.Exceptions
 {
     public class RedundantQueueSendException<T> : Exception, IRedundantQueueSendException<T>
     {

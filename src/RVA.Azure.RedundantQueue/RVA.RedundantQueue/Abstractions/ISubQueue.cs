@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace RVA.Azure.RedundantQueue.Abstractions
+namespace RVA.RedundantQueue.Abstractions
 {
     public interface ISubQueue<in T>
     {

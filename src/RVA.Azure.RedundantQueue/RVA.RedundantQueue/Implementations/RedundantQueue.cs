@@ -2,10 +2,10 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
-using RVA.Azure.RedundantQueue.Abstractions;
-using RVA.Azure.RedundantQueue.Exceptions;
+using RVA.RedundantQueue.Abstractions;
+using RVA.RedundantQueue.Exceptions;
 
-namespace RVA.Azure.RedundantQueue.Implementations
+namespace RVA.RedundantQueue.Implementations
 {
     internal class RedundantQueue<T> : AbstractRedundantQueue, IRedundantQueue<T>
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace RVA.Azure.RedundantQueue.Exceptions
+namespace RVA.RedundantQueue.Exceptions
 {
     public class DuplicateKeyException : Exception
     {
