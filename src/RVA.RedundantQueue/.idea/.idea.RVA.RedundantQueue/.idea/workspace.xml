@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfd31746-fc57-4101-92a5-a56860525af0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Package.nuspec" beforeDir="false" afterPath="$PROJECT_DIR$/Package.nuspec" afterDir="false" />
-    </list>
+    <list default="true" id="cfd31746-fc57-4101-92a5-a56860525af0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +77,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609173140381</updated>
       <workItem from="1609173144050" duration="1044000" />
-      <workItem from="1609176144903" duration="8487000" />
+      <workItem from="1609176144903" duration="8797000" />
     </task>
     <servers />
   </component>
