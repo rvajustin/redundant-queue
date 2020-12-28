@@ -49,15 +49,15 @@ namespace RVA.RedundantQueue.Tests
             // and multiple sub-queues
             var firstQueue = SetupMock<ISubQueue<string>>(out var firstQueueMock, false,
                 s => s.SetupGet(m => m.Name).Returns("firstQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(1));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var secondQueue = SetupMock<ISubQueue<string>>(out var secondQueueMock, false,
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(2));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Second));
 
             var thirdQueue = SetupMock<ISubQueue<string>>(out var thirdQueueMock, false,
                 s => s.SetupGet(m => m.Name).Returns("thirdQueue"),
-                s => s.SetupGet(m => m.Priority).Returns(3));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Last));
 
             var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
             await redundantQueue.AddQueueAsync(firstQueue);
@@ -81,11 +81,11 @@ namespace RVA.RedundantQueue.Tests
             // given multiple sub-queues
             var firstQueue = SetupMock<ISubQueue<string>>(out _, false,
                 s => s.SetupGet(m => m.Name).Returns("firstQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(1));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var secondQueue = SetupMock<ISubQueue<string>>(out _, false,
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(1));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
 
@@ -106,16 +106,16 @@ namespace RVA.RedundantQueue.Tests
             var firstQueue = SetupMock<ISubQueue<string>>(out var firstQueueMock, false,
                 s => s.Setup(m => m.SendAsync(It.IsAny<string>())).Throws(new Exception()),
                 s => s.SetupGet(m => m.Name).Returns("firstQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(1));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var secondQueue = SetupMock<ISubQueue<string>>(out var secondQueueMock, false,
                 s => s.Setup(m => m.SendAsync(It.IsAny<string>())).Throws(new Exception()),
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(2));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Second));
 
             var thirdQueue = SetupMock<ISubQueue<string>>(out var thirdQueueMock, false,
                 s => s.SetupGet(m => m.Name).Returns("thirdQueue"),
-                s => s.SetupGet(m => m.Priority).Returns(3));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Last));
 
             var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
             await redundantQueue.AddQueueAsync(firstQueue);

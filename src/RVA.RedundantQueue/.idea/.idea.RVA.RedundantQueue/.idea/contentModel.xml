@@ -22,8 +22,13 @@
         </e>
         <e p="Implementations" t="Include">
           <e p="AbstractRedundantQueue.cs" t="Include" />
+          <e p="QueuePriority.cs" t="Include" />
           <e p="RedundantQueue.cs" t="Include" />
           <e p="RedundantQueueOrchestrator.cs" t="Include" />
+          <e p="SubQueue.cs" t="Include" />
+          <e p="SubQueueMetadata.cs" t="Include" />
+          <e p="TetheredSubQueue.cs" t="Include" />
+          <e p="UntetheredSubQueue.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Release" t="Include">

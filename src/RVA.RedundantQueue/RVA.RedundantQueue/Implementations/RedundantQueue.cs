@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RVA.RedundantQueue.Abstractions;
@@ -18,7 +19,8 @@ namespace RVA.RedundantQueue.Implementations
 
         public string Name { get; }
 
-        public (byte Priority, string Name)[] SubQueues => _subQueues.Select(q => (q.Priority, q.Name)).ToArray();
+        public IEnumerable<SubQueueMetadata> SubQueues =>
+            _subQueues.Select(q => new SubQueueMetadata(q.Name, q.Priority)).ToArray();
             
         public EventHandler<RedundantQueueSendException<T>> ErrorCallback { get; set; }
 

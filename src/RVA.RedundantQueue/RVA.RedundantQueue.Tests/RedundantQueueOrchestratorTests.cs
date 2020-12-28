@@ -113,11 +113,11 @@ namespace RVA.RedundantQueue.Tests
             // and multiple sub-queues
             var firstQueue = SetupMock<ISubQueue<string>>(out _, false,
                 s => s.SetupGet(m => m.Name).Returns("firstQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(1));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var secondQueue = SetupMock<ISubQueue<string>>(out _, false,
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
-                s => s.SetupGet(m => m.Priority).Returns(2));
+                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Second));
 
             // when register is called
             var sut = Create<RedundantQueueOrchestrator>();
@@ -126,8 +126,8 @@ namespace RVA.RedundantQueue.Tests
             // then redundant queue is not null
             redundantQueue.Should().NotBeNull();
             // and both queues should be contained within
-            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("firstQueueMock"));
-            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("secondQueueMock"));
+            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("firstQueueMock") && q.Priority.Equals(QueuePriority.First));
+            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("secondQueueMock") && q.Priority.Equals(QueuePriority.Second));
         }
 
         [Theory]
