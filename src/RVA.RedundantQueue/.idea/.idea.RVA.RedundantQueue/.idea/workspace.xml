@@ -20,20 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfd31746-fc57-4101-92a5-a56860525af0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue.Tests/TestContainer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Assembly.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RVA.RedundantQueue/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue.sln" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueueSendException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/IRedundantQueueSendException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/ISubQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Abstractions/ISubQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Exceptions/RedundantQueueSendException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Exceptions/RedundantQueueSendException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/AbstractRedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/AbstractRedundantQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Package.nuspec" beforeDir="false" afterPath="$PROJECT_DIR$/Package.nuspec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +39,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Package.nuspec" />
         <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/UnitTest1.cs" />
         <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/xxx.cs" />
         <option value="$PROJECT_DIR$/RVA.RedundantQueue/Assembly.cs" />
@@ -65,6 +52,7 @@
         <option value="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueue.cs" />
         <option value="$PROJECT_DIR$/RVA.RedundantQueue/Implementations/RedundantQueueOrchestrator.cs" />
         <option value="$PROJECT_DIR$/RVA.RedundantQueue.Tests/RedundantQueueOrchestratorTests.cs" />
+        <option value="$PROJECT_DIR$/Package.nuspec" />
       </list>
     </option>
   </component>
@@ -92,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609173140381</updated>
       <workItem from="1609173144050" duration="1044000" />
-      <workItem from="1609176144903" duration="8174000" />
+      <workItem from="1609176144903" duration="8487000" />
     </task>
     <servers />
   </component>

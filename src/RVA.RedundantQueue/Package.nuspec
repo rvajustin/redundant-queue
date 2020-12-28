@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>RVA.RedundantQueue</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>rvajustin</authors>
     <owners>rvajustin</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
