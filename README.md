@@ -1,7 +1,6 @@
 # Redundant Queue
  
-![NuGet Generation](https://github.com/rvajustin/redundant-queue/workflows/NuGet%20Generation/badge.svg)
-
+![NuGet - Core Libraries](https://github.com/rvajustin/redundant-queue/workflows/NuGet%20-%20Core%20Libraries/badge.svg)
 
 ---
 
