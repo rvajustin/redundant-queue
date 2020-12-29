@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using RVA.RedundantQueue.Abstractions;
 using RVA.RedundantQueue.Exceptions;
-using Xunit;
 using RVA.RedundantQueue.Implementations;
+using Xunit;
 
 namespace RVA.RedundantQueue.Tests
 {
@@ -126,8 +126,10 @@ namespace RVA.RedundantQueue.Tests
             // then redundant queue is not null
             redundantQueue.Should().NotBeNull();
             // and both queues should be contained within
-            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("firstQueueMock") && q.Priority.Equals(QueuePriority.First));
-            redundantQueue.SubQueues.Should().Contain(q => q.Name.Equals("secondQueueMock") && q.Priority.Equals(QueuePriority.Second));
+            redundantQueue.SubQueues.Should()
+                .Contain(q => q.Name.Equals("firstQueueMock") && q.Priority.Equals(QueuePriority.First));
+            redundantQueue.SubQueues.Should().Contain(q =>
+                q.Name.Equals("secondQueueMock") && q.Priority.Equals(QueuePriority.Second));
         }
 
         [Theory]

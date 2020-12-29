@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using RVA.RedundantQueue.Abstractions;
 
@@ -6,31 +7,29 @@ namespace RVA.RedundantQueue.Implementations
 {
     public class UntetheredSubQueue<T> : ISubQueue<T>
     {
-        private readonly Func<T, Task> _method;
+        private readonly Func<T, CancellationToken, Task> method;
+
+        internal UntetheredSubQueue(string name, QueuePriority priority, Func<T, CancellationToken, Task> method)
+        {
+            this.method = method;
+            Name = name;
+            Priority = priority;
+        }
+
+        protected UntetheredSubQueue(string name, QueuePriority priority)
+        {
+            Name = name;
+            Priority = priority;
+        }
+
         public string Name { get; }
         public QueuePriority Priority { get; }
 
-        internal UntetheredSubQueue(string name, QueuePriority priority, Func<T, Task> method)
+        public virtual async Task SendAsync(T message, CancellationToken cancellationToken)
         {
-            _method = method;
-            Name = name;
-            Priority = priority;
-        }
-        
-        protected internal UntetheredSubQueue(string name, QueuePriority priority)
-        {
-            Name = name;
-            Priority = priority;
-        }
+            if (method == null) return;
 
-        public virtual async Task SendAsync(T message)
-        {
-            if (_method == null)
-            {
-                return;
-            }
-
-            await _method.Invoke(message);
+            await method.Invoke(message, cancellationToken);
         }
     }
 }

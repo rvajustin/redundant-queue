@@ -1,12 +1,13 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using RVA.RedundantQueue.Abstractions;
 using RVA.RedundantQueue.Exceptions;
-using Xunit;
 using RVA.RedundantQueue.Implementations;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace RVA.RedundantQueue.Tests
@@ -14,18 +15,18 @@ namespace RVA.RedundantQueue.Tests
     [ExcludeFromCodeCoverage]
     public class RedundantQueueTests : TestContainer
     {
-        private readonly ITestOutputHelper _testOutputHelper;
+        private readonly ITestOutputHelper testOutputHelper;
 
         public RedundantQueueTests(ITestOutputHelper testOutputHelper)
         {
-            _testOutputHelper = testOutputHelper;
+            this.testOutputHelper = testOutputHelper;
         }
 
         private void ErrorHandler(object sender, RedundantQueueSendException<string> exception)
         {
-            _testOutputHelper.WriteLine(exception.Message);
-            _testOutputHelper.WriteLine(exception.QueueMessage);
-            _testOutputHelper.WriteLine(exception.SubQueue.Name);
+            testOutputHelper.WriteLine(exception.Message);
+            testOutputHelper.WriteLine(exception.QueueMessage);
+            testOutputHelper.WriteLine(exception.SubQueue.Name);
         }
 
         [Fact]
@@ -55,28 +56,23 @@ namespace RVA.RedundantQueue.Tests
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
                 s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Second));
 
-            var thirdQueue = SetupMock<ISubQueue<string>>(out var thirdQueueMock, false,
-                s => s.SetupGet(m => m.Name).Returns("thirdQueue"),
-                s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Last));
-
-            var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
-            await redundantQueue.AddQueueAsync(firstQueue);
-            await redundantQueue.AddQueueAsync(secondQueue);
-            await redundantQueue.AddQueueAsync(thirdQueue);
+            var redundantQueue = new RedundantQueue<string>("redundantQueue") {ErrorCallback = ErrorHandler};
+             redundantQueue.AddSubQueue(firstQueue);
+             redundantQueue.AddSubQueue(secondQueue);
 
             // when the message is sent
             await redundantQueue.SendAsync(message);
 
             // then the first queue received the message
-            firstQueueMock.Verify(m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage"))), Times.Once);
+            firstQueueMock.Verify(
+                m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage")), It.IsAny<CancellationToken>()),
+                Times.Once);
             // and the second queue did not receive the message
-            secondQueueMock.Verify(m => m.SendAsync(It.IsAny<string>()), Times.Never);
-            // and the third queue did not receive the message
-            thirdQueueMock.Verify(m => m.SendAsync(It.IsAny<string>()), Times.Never);
+            secondQueueMock.Verify(m => m.SendAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
         }
 
         [Fact]
-        public async Task ShouldRejectMultipleSubQueuesWithEqualPriorities()
+        public void ShouldRejectMultipleSubQueuesWithEqualPriorities()
         {
             // given multiple sub-queues
             var firstQueue = SetupMock<ISubQueue<string>>(out _, false,
@@ -89,12 +85,11 @@ namespace RVA.RedundantQueue.Tests
 
             var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
 
-            await redundantQueue.AddQueueAsync(firstQueue);
+            redundantQueue.AddSubQueue(firstQueue);
 
             // when the second queue is added with a duplicate priority
             // then an exception is thrown
-            await Assert.ThrowsAsync<InvalidOperationException>(async () =>
-                await redundantQueue.AddQueueAsync(secondQueue));
+            Assert.Throws<InvalidOperationException>( () => redundantQueue.AddSubQueue(secondQueue));
         }
 
         [Fact]
@@ -104,12 +99,14 @@ namespace RVA.RedundantQueue.Tests
             var message = "someMessage";
             // and multiple sub-queues
             var firstQueue = SetupMock<ISubQueue<string>>(out var firstQueueMock, false,
-                s => s.Setup(m => m.SendAsync(It.IsAny<string>())).Throws(new Exception()),
+                s => s.Setup(m => m.SendAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                    .Throws(new Exception()),
                 s => s.SetupGet(m => m.Name).Returns("firstQueueMock"),
                 s => s.SetupGet(m => m.Priority).Returns(QueuePriority.First));
 
             var secondQueue = SetupMock<ISubQueue<string>>(out var secondQueueMock, false,
-                s => s.Setup(m => m.SendAsync(It.IsAny<string>())).Throws(new Exception()),
+                s => s.Setup(m => m.SendAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                    .Throws(new Exception()),
                 s => s.SetupGet(m => m.Name).Returns("secondQueueMock"),
                 s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Second));
 
@@ -118,19 +115,25 @@ namespace RVA.RedundantQueue.Tests
                 s => s.SetupGet(m => m.Priority).Returns(QueuePriority.Last));
 
             var redundantQueue = new RedundantQueue<string>("thirdQueueMock") {ErrorCallback = ErrorHandler};
-            await redundantQueue.AddQueueAsync(firstQueue);
-            await redundantQueue.AddQueueAsync(secondQueue);
-            await redundantQueue.AddQueueAsync(thirdQueue);
+             redundantQueue.AddSubQueue(firstQueue);
+             redundantQueue.AddSubQueue(secondQueue);
+             redundantQueue.AddSubQueue(thirdQueue);
 
             // when the message is sent
             await redundantQueue.SendAsync(message);
 
             // then we attempted to send the message to the first queue
-            firstQueueMock.Verify(m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage"))), Times.Once);
+            firstQueueMock.Verify(
+                m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage")), It.IsAny<CancellationToken>()),
+                Times.Once);
             // and we attempted to send the message to the second queue
-            secondQueueMock.Verify(m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage"))), Times.Once);
+            secondQueueMock.Verify(
+                m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage")), It.IsAny<CancellationToken>()),
+                Times.Once);
             // and we attempted to send the message to the third queue
-            thirdQueueMock.Verify(m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage"))), Times.Once);
+            thirdQueueMock.Verify(
+                m => m.SendAsync(It.Is<string>(s => s.Equals("someMessage")), It.IsAny<CancellationToken>()),
+                Times.Once);
         }
     }
 }

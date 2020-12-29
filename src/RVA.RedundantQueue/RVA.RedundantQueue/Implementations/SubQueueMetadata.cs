@@ -4,8 +4,8 @@ namespace RVA.RedundantQueue.Implementations
     {
         public string Name { get; }
         public QueuePriority Priority { get; }
-        
-        public SubQueueMetadata( string name, QueuePriority priority)
+
+        public SubQueueMetadata(string name, QueuePriority priority)
         {
             Priority = priority;
             Name = name;

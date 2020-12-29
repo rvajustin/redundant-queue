@@ -5,10 +5,6 @@ namespace RVA.RedundantQueue.Exceptions
 {
     public class RedundantQueueSendException<T> : Exception, IRedundantQueueSendException<T>
     {
-        public T QueueMessage { get; }
-
-        public ISubQueue<T> SubQueue { get; }
-
         public RedundantQueueSendException(string message, Exception innerException, T queueMessage,
             ISubQueue<T> subQueue)
             : base(message, innerException)
@@ -16,5 +12,9 @@ namespace RVA.RedundantQueue.Exceptions
             QueueMessage = queueMessage;
             SubQueue = subQueue;
         }
+
+        public T QueueMessage { get; }
+
+        public ISubQueue<T> SubQueue { get; }
     }
 }

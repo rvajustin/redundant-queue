@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RVA.RedundantQueue", "RVA.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RVA.RedundantQueue.Tests", "RVA.RedundantQueue.Tests\RVA.RedundantQueue.Tests.csproj", "{90ECD09D-4039-437F-BC47-0A5028697320}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RVA.RedundantQueue.AspNetCore", "RVA.RedundantQueue.AspNetCore\RVA.RedundantQueue.AspNetCore.csproj", "{D62DA97D-CF3A-4CE5-9417-E59E734A37F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{90ECD09D-4039-437F-BC47-0A5028697320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90ECD09D-4039-437F-BC47-0A5028697320}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90ECD09D-4039-437F-BC47-0A5028697320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62DA97D-CF3A-4CE5-9417-E59E734A37F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62DA97D-CF3A-4CE5-9417-E59E734A37F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62DA97D-CF3A-4CE5-9417-E59E734A37F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62DA97D-CF3A-4CE5-9417-E59E734A37F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

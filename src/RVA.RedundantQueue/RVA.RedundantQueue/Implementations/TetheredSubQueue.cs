@@ -1,28 +1,27 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RVA.RedundantQueue.Implementations
 {
     public class TetheredSubQueue<T, TTether> : UntetheredSubQueue<T>
     {
-        private readonly TTether _tether;
-        private readonly Func<TTether, T, Task> _method;
+        private readonly Func<TTether, T, CancellationToken, Task> method;
+        private readonly TTether tether;
 
-        internal TetheredSubQueue(TTether tether, string name, QueuePriority priority, Func<TTether, T, Task> method)
+        internal TetheredSubQueue(TTether tether, string name, QueuePriority priority,
+            Func<TTether, T, CancellationToken, Task> method)
             : base(name, priority)
         {
-            _tether = tether;
-            _method = method;
+            this.tether = tether;
+            this.method = method;
         }
 
-        public override async Task SendAsync(T message)
+        public override async Task SendAsync(T message, CancellationToken cancellationToken)
         {
-            if (_method == null)
-            {
-                return;
-            }
+            if (method == null) return;
 
-            await _method.Invoke(_tether, message);
+            await method.Invoke(tether, message, cancellationToken);
         }
     }
 }

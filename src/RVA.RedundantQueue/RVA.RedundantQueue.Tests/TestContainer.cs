@@ -11,12 +11,7 @@ namespace RVA.RedundantQueue.Tests
     [ExcludeFromCodeCoverage]
     public abstract class TestContainer
     {
-        
-        private readonly Dictionary<Type, (Mock, object)> _mocks = new Dictionary<Type, (Mock, object)>();
-        
-        protected IFixture Fixture { get; }
-
-        protected IReadOnlyDictionary<Type, (Mock, object)> Mocks { get; }
+        private readonly Dictionary<Type, (Mock, object)> mocks = new Dictionary<Type, (Mock, object)>();
 
         protected TestContainer()
         {
@@ -25,17 +20,18 @@ namespace RVA.RedundantQueue.Tests
                 {
                     ConfigureMembers = true
                 });
-            Mocks = new ReadOnlyDictionary<Type, (Mock, object)>(_mocks);
+            Mocks = new ReadOnlyDictionary<Type, (Mock, object)>(mocks);
         }
+
+        protected IFixture Fixture { get; }
+
+        protected IReadOnlyDictionary<Type, (Mock, object)> Mocks { get; }
 
         public TService Create<TService>(params Action<TService>[] actions)
         {
             var service = Fixture.Create<TService>();
 
-            foreach (var action in actions)
-            {
-                action(service);
-            }
+            foreach (var action in actions) action(service);
 
             return service;
         }
@@ -57,14 +53,11 @@ namespace RVA.RedundantQueue.Tests
             mock = shared ? Fixture.Freeze<Mock<TService>>() : Fixture.Create<Mock<TService>>();
             service = mock.Object;
 
-            foreach (var action in actions)
-            {
-                action(mock);
-            }
+            foreach (var action in actions) action(mock);
 
             if (shared)
             {
-                _mocks[serviceType] = (mock, service);
+                mocks[serviceType] = (mock, service);
                 Fixture.Inject(service);
             }
 

@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("RVA.RedundantQueue.Tests")]
+[assembly: InternalsVisibleTo("RVA.RedundantQueue.Tests")]

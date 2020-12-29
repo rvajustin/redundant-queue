@@ -9,10 +9,13 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="RVA.RedundantQueue" t="IncludeRecursive">
         <e p="Abstractions" t="Include">
+          <e p="IReadOnlySubQueueConfiguration.cs" t="Include" />
           <e p="IRedundantQueue.cs" t="Include" />
           <e p="IRedundantQueueOrchestrator.cs" t="Include" />
           <e p="IRedundantQueueSendException.cs" t="Include" />
           <e p="ISubQueue.cs" t="Include" />
+          <e p="ISubQueueConfiguration.cs" t="Include" />
+          <e p="QueueContext.cs" t="Include" />
         </e>
         <e p="Assembly.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -26,6 +29,7 @@
           <e p="RedundantQueue.cs" t="Include" />
           <e p="RedundantQueueOrchestrator.cs" t="Include" />
           <e p="SubQueue.cs" t="Include" />
+          <e p="SubQueueConfiguration.cs" t="Include" />
           <e p="SubQueueMetadata.cs" t="Include" />
           <e p="TetheredSubQueue.cs" t="Include" />
           <e p="UntetheredSubQueue.cs" t="Include" />
@@ -38,6 +42,18 @@
           </e>
         </e>
         <e p="RVA.RedundantQueue.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="RVA.RedundantQueue.AspNetCore" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Release" t="Include">
+            <e p="netstandard2.1" t="Include">
+              <e p="RVA.RedundantQueue.AspNetCore.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="RedundantQueueExtensions.cs" t="Include" />
+        <e p="RVA.RedundantQueue.AspNetCore.csproj" t="IncludeRecursive" />
       </e>
       <e p="RVA.RedundantQueue.sln" t="IncludeFlat" />
       <e p="RVA.RedundantQueue.Tests" t="IncludeRecursive">
@@ -52,6 +68,7 @@
         <e p="RedundantQueueOrchestratorTests.cs" t="Include" />
         <e p="RedundantQueueTests.cs" t="Include" />
         <e p="RVA.RedundantQueue.Tests.csproj" t="IncludeRecursive" />
+        <e p="SubQueueTests.cs" t="Include" />
         <e p="TestContainer.cs" t="Include" />
       </e>
     </e>
