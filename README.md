@@ -17,8 +17,8 @@ This is a faux monorepo that combines three assets:
 
 
 ## Getting started
-1. Reference the Nuget package
-1. Configure your web services
+1. Install the [Nuget package](https://www.nuget.org/packages/RVA.RedundantQueue/)
+1. Configure your services
 1. Add your redundant queues
 
 
