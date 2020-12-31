@@ -82,8 +82,8 @@ jobs:
           NUGET_SOURCE: https://api.nuget.org
 
       # Publish ASP.NET Package
-      - name: Publish ASP.NET package
-        id: publish_nuget
+      - name: Publish ASP.NET Core package
+        id: publish_nuget_aspnetcore
         uses: rohith/publish-nuget@v2
         with:
           PROJECT_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue.AspNetCore/RVA.RedundantQueue.AspNetCore.csproj
