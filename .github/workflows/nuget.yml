@@ -21,34 +21,79 @@ jobs:
         with:
           dotnet-version: 3.1.200
 
-      # Publis
-      - name: Publish on version change
+      # restore dependencies  
+      - name: Install dependencies
+        run: dotnet restore
+
+        # build project
+      - name: Build
+        run: dotnet build --configuration $config --no-restore
+
+        # set pr number, if it's a pr build
+      - name: set pr build number
+        id: PRNUMBER
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: kkak10/pr-number-action@v1.3
+
+        # set report file and title 
+      - name: Set Test Title
+        run: | 
+              if ${{ github.event_name == 'pull_request' }}
+              then
+                echo "::set-env name=title::Test Run for PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})"
+                echo "::set-env name=file_name::TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md"
+              else
+                echo "::set-env name=title::Test Run ${{github.run_number}}"
+                echo "::set-env name=file_name::TestReport.${{github.run_number}}.md"
+              fi
+
+      # run tests with built project
+      - name: Test PR      
+        run: dotnet test --no-restore --no-build --configuration $config --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+    
+      # upload report as build artifact
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        if: ${{always()}}
+        with:
+          name: 'Test Run'
+          path: ${{github.workspace}}/${{env.file_name}}
+
+      # add report as PR comment (if PR)
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: ${{env.file_name}}
+
+      # Tests
+      - name: Test
+        id: dotnet_test
+
+      # Publish Core Package
+      - name: Publish core package
         id: publish_nuget
         uses: rohith/publish-nuget@v2
         with:
-          # Filepath of the project to be packaged, relative to root of repository
           PROJECT_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue/RVA.RedundantQueue.csproj
-          
-          # NuGet package id, used for version detection & defaults to project name
           PACKAGE_NAME: RVA.RedundantQueue
-          
-          # Regex pattern to extract version info in a capturing group
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          
-          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
-          # VERSION_STATIC: 1.0.0
-
-          # Flag to toggle git tagging, enabled by default
           TAG_COMMIT: true
-
-          # Format of the git tag, [*] gets replaced with actual version
           TAG_FORMAT: v*
-
-          # API key to authenticate with NuGet server
           NUGET_KEY: ${{secrets.NUGET}}
-
-          # NuGet server uri hosting the packages, defaults to https://api.nuget.org
           NUGET_SOURCE: https://api.nuget.org
 
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          # INCLUDE_SYMBOLS: false
+      # Publish ASP.NET Package
+      - name: Publish ASP.NET package
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue.AspNetCore/RVA.RedundantQueue.AspNetCore.csproj
+          PACKAGE_NAME: RVA.RedundantQueue.AspNetCore
+          VERSION_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue/RVA.RedundantQueue.csproj
+          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          TAG_COMMIT: false
+          NUGET_KEY: ${{secrets.NUGET}}
+          NUGET_SOURCE: https://api.nuget.org

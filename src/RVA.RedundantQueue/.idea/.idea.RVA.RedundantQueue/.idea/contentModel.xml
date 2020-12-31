@@ -53,6 +53,7 @@
           </e>
         </e>
         <e p="RedundantQueueExtensions.cs" t="Include" />
+        <e p="RVA.RedundantQueue.AspNetCore.1.0.0.nupkg" t="Include" />
         <e p="RVA.RedundantQueue.AspNetCore.csproj" t="IncludeRecursive" />
       </e>
       <e p="RVA.RedundantQueue.sln" t="IncludeFlat" />
