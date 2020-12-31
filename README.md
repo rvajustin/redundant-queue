@@ -1,7 +1,6 @@
 # Redundant Queue
  
-![NuGet Generation](https://github.com/rvajustin/redundant-queue/workflows/NuGet%20Generation/badge.svg)
-
+![NuGet - Core Libraries](https://github.com/rvajustin/redundant-queue/workflows/NuGet%20-%20Core%20Libraries/badge.svg)
 
 ---
 
@@ -17,8 +16,8 @@ This is a faux monorepo that combines three assets:
 
 
 ## Getting started
-1. Reference the Nuget package
-1. Configure your web services
+1. Install the [Nuget package](https://www.nuget.org/packages/RVA.RedundantQueue/)
+1. Configure your services
 1. Add your redundant queues
 
 
