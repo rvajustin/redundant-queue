@@ -74,7 +74,8 @@ jobs:
         with:
           PROJECT_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue/RVA.RedundantQueue.csproj
           PACKAGE_NAME: RVA.RedundantQueue
-          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          VERSION_FILE_PATH: package.json
+          VERSION_REGEX: \s*\"version\":\s*\"(.*)\"\s*
           TAG_COMMIT: true
           TAG_FORMAT: v*
           NUGET_KEY: ${{secrets.NUGET}}
@@ -87,8 +88,8 @@ jobs:
         with:
           PROJECT_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue.AspNetCore/RVA.RedundantQueue.AspNetCore.csproj
           PACKAGE_NAME: RVA.RedundantQueue.AspNetCore
-          VERSION_FILE_PATH: src/RVA.RedundantQueue/RVA.RedundantQueue/RVA.RedundantQueue.csproj
-          VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          VERSION_FILE_PATH: package.json
+          VERSION_REGEX: \s*\"version\":\s*\"(.*)\"\s*
           TAG_COMMIT: false
           NUGET_KEY: ${{secrets.NUGET}}
           NUGET_SOURCE: https://api.nuget.org
