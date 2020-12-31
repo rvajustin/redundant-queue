@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>RVA.RedundantQueue</id>
+        <version>1.2.1</version>
+        <description>Automatically manage queue storage with redundant queues. Sometimes queues are fickle or have poor SLAs. This library permits the use of redundant queues if a primary queue fails.</description>
+        <authors>rvajustin</authors>
+    </metadata>
+</package>
