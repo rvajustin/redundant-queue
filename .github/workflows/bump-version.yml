@@ -28,10 +28,9 @@ jobs:
         id: version-bump
         uses: "phips28/gh-action-bump-version@master"
         with:
-          tag-prefix: 'v'
           patch-wording: 'patch,chore,fix,build,ci,docs,style,perf,test'
           minor-wording: 'minor,feat,refactor'
-          major-wording: 'major,BREAKING CHANGE,breaking change,'
+          major-wording: 'major,BREAKING CHANGE,breaking change'
           rc-wording: 'RELEASE,alpha,rc'
           target-branch: 'main'
         env:
