@@ -25,48 +25,6 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore src/RVA.RedundantQueue/RVA.RedundantQueue.sln
 
-        # set pr number, if it's a pr build
-      - name: set pr build number
-        id: PRNUMBER
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: kkak10/pr-number-action@v1.3
-
-        # set report file and title 
-      - name: Set Test Title
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-        run: | 
-              if ${{ github.event_name == 'pull_request' }}
-              then
-                echo "::set-env name=title::Test Run for PR #${{steps.PRNUMBER.outputs.pr}} (${{github.run_number}})"
-                echo "::set-env name=file_name::TestReport.${{steps.PRNUMBER.outputs.pr}}.${{github.run_number}}.md"
-              else
-                echo "::set-env name=title::Test Run ${{github.run_number}}"
-                echo "::set-env name=file_name::TestReport.${{github.run_number}}.md"
-              fi
-
-      # run tests with built project
-      - name: Test PR      
-        run: |
-              dotnet test --no-restore --no-build --configuration Release --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" src/RVA.RedundantQueue/RVA.RedundantQueue.sln
-    
-      # upload report as build artifact
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{always()}}
-        with:
-          name: 'Test Run'
-          path: ${{github.workspace}}/${{env.file_name}}
-
-      # add report as PR comment (if PR)
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        if: ${{ github.event_name == 'pull_request' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: ${{env.file_name}}
-
       # Publish Core Package
       - name: Publish core package
         id: publish_nuget
