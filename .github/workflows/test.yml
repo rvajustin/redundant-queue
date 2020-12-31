@@ -1,4 +1,4 @@
-name: NuGet - Core Libraries
+name: Test
 
 on:
   push
