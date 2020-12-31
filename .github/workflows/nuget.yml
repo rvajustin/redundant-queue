@@ -52,10 +52,7 @@ jobs:
       # run tests with built project
       - name: Test PR      
         run: |
-              dotnet test --no-restore --no-build \
-              --configuration Release \
-              --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"  \
-              src/RVA.RedundantQueue/RVA.RedundantQueue.sln
+              dotnet test --no-restore --no-build --configuration Release --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};" src/RVA.RedundantQueue/RVA.RedundantQueue.sln
     
       # upload report as build artifact
       - name: Upload a Build Artifact
